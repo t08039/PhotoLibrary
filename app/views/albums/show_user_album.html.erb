@@ -126,7 +126,7 @@ $(function() {
 				<ul>
 					<% for comment in @new_comments %>
 					<li>
-						<%= link_to "#{comment.comment} by #{User.find(comment.user_id).login}",{:action => :show, :id => comment.photo_id} %>
+						<%= link_to "#{comment.comment} by #{User.find(comment.user_id).login}",{:controller => :photos, :action => :show, :id => comment.photo_id} %>
 					</li>
 					<% end %>
 				</ul>
