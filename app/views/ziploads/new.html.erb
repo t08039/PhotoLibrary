@@ -1,0 +1,5 @@
+<% form_tag({:action => 'create'},{:multipart=>true}) do %>
+ <%= render :partial => 'form' %>
+<% end %>
+jpeg, png形式の画像ファイルに対応しています。<br />
+※zipにまとめた画像を一括でアルバムに登録できます。非対応の形式のファイルは登録されません。<br />

@@ -1,0 +1,7 @@
+登録先: <% if params[:album_id] %>
+<%= $album.title %><br /><br />
+<%end %>
+
+<% form_tag({:action => 'create'},{:multipart=>true}) do %>
+ <%= render :partial => 'form' %>
+<% end %>

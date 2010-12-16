@@ -1,0 +1,15 @@
+<head>
+<%= javascript_include_tag "jqModal.js" %>
+<script type="text/javascript">
+$(function() {
+  $("#dialog").jqm({ modal: true });
+  //$("#dialog").jqm();
+  //$("#dialog").jqm({closeClass: "jqmClose", trigger: ".jqModal", modal: true });   
+});
+</script>
+</head>
+<a href="#" class="jqModal">開く</a>
+<div class="jqmWindow" id="dialog">
+aaab
+<a href="#" class="jqmClose">閉じる</a>
+</div>

@@ -1,0 +1,2 @@
+<%= link_to @photo.tag,  tagsearch_url(:tag => @photo.tag) %>
+<%= link_to (image_tag "btn_entry.gif",:border => 0), {:action => :edit_tag, :photo => @photo.id}, {:remote => true, "data-type" => "html", "data-update" => "#{@photo.id}_tag"} %>

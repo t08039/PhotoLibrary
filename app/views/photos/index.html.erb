@@ -1,0 +1,182 @@
+<head>
+<%= javascript_include_tag "ui.core.js" %>
+<%= javascript_include_tag "ui.tabs.js" %>
+<%= javascript_include_tag "window.js" %>
+<%= javascript_include_tag "interface.js" %>
+<%= javascript_include_tag "jquery.hoveraccordion.js" %>
+<%= javascript_include_tag "jqModal.js" %>
+<script type="text/javascript">
+$(function(){
+  $("a[data-update]")
+    .live("ajax:success",function(data,status,xhr){
+      var link = $(this);
+      $("#" + link.attr("data-update")).html(status);
+    });
+});
+</script>
+<script type="text/javascript">
+$(function(){
+  $("form[data-update]")
+    .live("ajax:success",function(data,status,xhr){
+      var link = $(this);
+      $("#" + link.attr("data-update")).html(status);
+    });
+});
+</script>
+<script type="text/javascript">
+$(function() {
+  //$("#tabs > ul").tabs();
+  //$('#tabs > ul').tabs({ fxSlide: true });
+  //$("#tabs > ul").tabs({ selected: 3 });        
+  //$("#tabs > ul").tabs({ selected: null });
+  //$("#tabs > ul").tabs({ event: "mouseover" });
+  //$("#tabs > ul").tabs({ disabled: [1, 2] });
+  //$("#tabs > ul").tabs({ fx: { opacity: "toggle"} });
+  //$("#tabs > ul").tabs({ fx: { height: "toggle"} });
+  $("#tabs > ul").tabs({ 
+  fx: {height: "toggle", opacity: "toggle", duration: "fast"} });        
+});
+</script>
+<script type="text/javascript">
+$(function() {
+  //$("#accordionMenu").hoverAccordion();
+  //$("#accordionMenu").hoverAccordion({activateitem: "2"});
+  $("#accordionMenu").hoverAccordion({speed: "fast"});
+});       
+</script>
+<script type="text/javascript">
+$(function() {
+  $("#dialog").jqm({ modal: true });
+  //$("#dialog").jqm();
+  //$("#dialog").jqm({closeClass: "jqmClose", trigger: ".jqModal", modal: true });   
+});
+</script>
+<%= stylesheet_link_tag "ui.tabs.css" %>
+<%= stylesheet_link_tag "window.css" %>
+<%= stylesheet_link_tag "hoverAccordion.css" %>
+<%= stylesheet_link_tag "photo.css" %>
+</head>
+
+<body>
+<div id="top">
+   <div id="wrapper">
+      <div id="header">
+         <h2>フォトライブラリ</h2>
+         <div id="pr">
+            <p style="font-size:20px;">こんにちは、<%= link_to current_user.login, {:controller => 'photos',:action => 'index'}%>さん。</p>
+         </div>
+      </div><!-- header end -->
+      <div id="menu">
+         <ul>
+         <li class="home"><%= link_to 'ホーム', :action => 'index' %></li>
+         <li><%= link_to '写真追加', {:controller => :photos, :action => :new}, 
+		               		{:remote => true, "data-type" => "html", "data-update" => "main"} %></li>
+         <li><%= link_to 'アルバム', {:controller => :albums, :action => :index} %></li>
+         <li><%= link_to 'zipでアップロード', {:controller => :ziploads, :action => :new}, 
+		               		{:remote => true, "data-type" => "html", "data-update" => "main"} %></li>
+         <li><%= link_to 'ログアウト',"logout" %></li>
+         </ul>
+      </div><!-- menu end -->
+      <div id="contents">
+         <div id="main">
+            <p>
+            <table class="tag">
+			<tr><td class="top">
+				タグリスト
+			</td></tr>
+			<tr><td class="btm">
+				<%= link_to '全て', :action => 'tagsearch' %>
+				<% for photo_tags in @photo_tags %>
+					<%= link_to photo_tags.tag, tagsearch_url(:tag => photo_tags.tag) %>
+				<% end %>
+			</td></tr>
+			</table>
+			</p>
+            <p>
+			<% for photo in @photos %>
+		        <table class="photo">
+		            <tr>
+		                <td>タイトル:</td>
+		                <td><div id="<%= "#{photo.id}_title" %>">
+		                <% if photo.title.size <= 12 %>
+		                	<%= photo.title %>
+		                <% else %>
+		                	<%= "#{photo.title[0..11]}..." %>
+		                <% end %>
+		                <%= link_to (image_tag "btn_entry.gif",:border => 0), {:action => :edit_title, :photo => photo.id}, {:remote => true, "data-type" => "html", "data-update" => "#{photo.id}_title"} %>
+						</div></td>
+		            </tr>
+		            <tr>
+		                <td colspan="2" align="center">
+		                    <%=
+		                    link_to (image_tag url_for(:action => "get_thumb",:id => photo.id),
+		                                       :alt    => photo.file_name,
+		                                       :title  => photo.description,
+		                                       :border => 0),
+		                            {:action=>'get_photo',:id=>photo.id},:popup => ['new_window_name', 'menubar=no,resizable=yes']
+		                    %>
+		                </td>
+		            <tr>
+		                <td>タグ:</td>
+		                <td><div id="<%= "#{photo.id}_tag" %>"><%= link_to photo.tag,  tagsearch_url(:tag => photo.tag) %>
+		               		<%= link_to (image_tag "btn_entry.gif",:border => 0), {:action => :edit_tag, :photo => photo.id}, {:remote => true, "data-type" => "html", "data-update" => "#{photo.id}_tag"} %>
+						</div>
+		                </td>
+		            </tr>
+		            <tr>
+		                <td colspan="2" class="operation">
+		               		<%= link_to '詳細',{:action => :show, :id => photo.id} %>
+		                    <%= link_to '削除', photo, :confirm => '削除しますか？', :method => :delete %>
+		                </td>
+		            </tr>
+		            <tr>
+		                <td class="updated">登録:</td>
+		                <td><%= photo.created_at.strftime("%Y/%m/%d %X")%></td>
+		            </tr>
+		            <tr>
+		                <td class="updated">更新:</td>
+		                <td><%= photo.updated_at.strftime("%Y/%m/%d %X")%></td>
+		            </tr>
+		        </table>
+			<% end %>
+            </p>
+         <p><h3><%= will_paginate(@photos,:prev_label=>'前を表示', :next_label => '次を表示') %></h3></p>
+         </div><!-- main end -->
+         <div id="sub">
+            <div class="section">
+               <h2>ユーザ一覧</h2>
+				<ul>
+					<% for user_list in @user_list %>
+					<li>
+						<%= link_to user_list.login,{:controller => :photos, :action => :show_user, :user_id => user_list.id} %>
+					</li>
+					<% end %>
+				</ul>
+            </div><!-- section end -->
+            <div class="section">
+               <h2>最新コメント10件</h2>
+				<ul>
+					<% for comment in @new_comments %>
+					<li>
+						<%= link_to "#{comment.comment} by #{User.find(comment.user_id).login}",{:action => :show, :id => comment.photo_id} %>
+					</li>
+					<% end %>
+				</ul>
+            </div><!-- section end -->
+         </div><!-- sub end -->
+         <div id="totop">
+            <p><a href="#top">ページのトップへ戻る</a></p>
+         </div><!-- totop end -->
+         <div id="footMenu">
+         <ul>
+         <li>
+         </li>
+         </ul>
+         </div><!-- footerMenu end -->
+      </div><!-- contents end -->
+      <div id="footer">
+         <address></address>
+      </div><!-- footer end -->
+   </div><!-- wrapper end -->
+</div><!-- top end -->
+</body>

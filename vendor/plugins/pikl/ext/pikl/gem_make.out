@@ -1,0 +1,26 @@
+/usr/local/bin/ruby extconf.rb
+checking for jpeglib.h... yes
+checking for main() in -ljpeg... yes
+checking for png.h... yes
+checking for main() in -lpng... yes
+creating Makefile
+
+make
+gcc -I. -I/usr/local/include/ruby-1.9.1/i686-linux -I/usr/local/include/ruby-1.9.1/ruby/backward -I/usr/local/include/ruby-1.9.1 -I. -DHAVE_JPEGLIB_H -DHAVE_PNG_H  -D_FILE_OFFSET_BITS=64  -fPIC -O3 -ggdb -Wextra -Wno-unused-parameter -Wno-parentheses -Wpointer-arith -Wwrite-strings -Wno-missing-field-initializers -Wno-long-long  -o pikl_pattern.o -c pikl_pattern.c
+gcc -I. -I/usr/local/include/ruby-1.9.1/i686-linux -I/usr/local/include/ruby-1.9.1/ruby/backward -I/usr/local/include/ruby-1.9.1 -I. -DHAVE_JPEGLIB_H -DHAVE_PNG_H  -D_FILE_OFFSET_BITS=64  -fPIC -O3 -ggdb -Wextra -Wno-unused-parameter -Wno-parentheses -Wpointer-arith -Wwrite-strings -Wno-missing-field-initializers -Wno-long-long  -o pikl_blur.o -c pikl_blur.c
+gcc -I. -I/usr/local/include/ruby-1.9.1/i686-linux -I/usr/local/include/ruby-1.9.1/ruby/backward -I/usr/local/include/ruby-1.9.1 -I. -DHAVE_JPEGLIB_H -DHAVE_PNG_H  -D_FILE_OFFSET_BITS=64  -fPIC -O3 -ggdb -Wextra -Wno-unused-parameter -Wno-parentheses -Wpointer-arith -Wwrite-strings -Wno-missing-field-initializers -Wno-long-long  -o pikl_rotate.o -c pikl_rotate.c
+gcc -I. -I/usr/local/include/ruby-1.9.1/i686-linux -I/usr/local/include/ruby-1.9.1/ruby/backward -I/usr/local/include/ruby-1.9.1 -I. -DHAVE_JPEGLIB_H -DHAVE_PNG_H  -D_FILE_OFFSET_BITS=64  -fPIC -O3 -ggdb -Wextra -Wno-unused-parameter -Wno-parentheses -Wpointer-arith -Wwrite-strings -Wno-missing-field-initializers -Wno-long-long  -o pikl_effect.o -c pikl_effect.c
+pikl_effect.c: In function ‘pkl_focus’:
+pikl_effect.c:614:12: 警告: 符合付きと符合無しの整数式同士の比較です
+pikl_effect.c:615:10: 警告: 符合付きと符合無しの整数式同士の比較です
+pikl_effect.c: In function ‘pkl_emboss’:
+pikl_effect.c:659:12: 警告: 符合付きと符合無しの整数式同士の比較です
+pikl_effect.c:660:10: 警告: 符合付きと符合無しの整数式同士の比較です
+gcc -I. -I/usr/local/include/ruby-1.9.1/i686-linux -I/usr/local/include/ruby-1.9.1/ruby/backward -I/usr/local/include/ruby-1.9.1 -I. -DHAVE_JPEGLIB_H -DHAVE_PNG_H  -D_FILE_OFFSET_BITS=64  -fPIC -O3 -ggdb -Wextra -Wno-unused-parameter -Wno-parentheses -Wpointer-arith -Wwrite-strings -Wno-missing-field-initializers -Wno-long-long  -o pikl_pixel.o -c pikl_pixel.c
+gcc -I. -I/usr/local/include/ruby-1.9.1/i686-linux -I/usr/local/include/ruby-1.9.1/ruby/backward -I/usr/local/include/ruby-1.9.1 -I. -DHAVE_JPEGLIB_H -DHAVE_PNG_H  -D_FILE_OFFSET_BITS=64  -fPIC -O3 -ggdb -Wextra -Wno-unused-parameter -Wno-parentheses -Wpointer-arith -Wwrite-strings -Wno-missing-field-initializers -Wno-long-long  -o pikl_png.o -c pikl_png.c
+In file included from /usr/include/png.h:518:0,
+                 from pikl_png.h:8,
+                 from pikl_png.c:1:
+/usr/include/pngconf.h:390:13: error: 無効なプリプロセスディレクティヴ #__pngconf
+/usr/include/pngconf.h:391:13: error: 無効なプリプロセスディレクティヴ #__dont__
+make: *** [pikl_png.o] エラー 1

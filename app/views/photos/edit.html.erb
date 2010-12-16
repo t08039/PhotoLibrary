@@ -1,0 +1,7 @@
+<h1>Editing photo</h1>
+<% form_tag({:action => 'create'},{:multipart=>true}) do %>
+<%= render 'form' %>
+<% end %>
+
+<%= link_to 'Show', @photo %> |
+<%= link_to 'Back', photos_path %>

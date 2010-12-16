@@ -1,0 +1,46 @@
+<%= stylesheet_link_tag "hoverAccordion.css" %>
+<%= stylesheet_link_tag "photo.css" %>
+
+<body>
+<div id="top">
+   <div id="wrapper">
+      <div id="header">
+         <h2>フォトライブラリ</h2>
+      </div><!-- header end -->
+      <div id="contents">
+         <div id="main">
+			<h2>ユーザーログイン</h2>
+            <p>
+			<%= form_tag session_path do -%>
+			<p><%= label_tag 'ログインID' %><br />
+			<%= text_field_tag 'login', @login %></p>
+
+			<p><%= label_tag 'パスワード' %><br/>
+			<%= password_field_tag 'password', nil %></p>
+
+			<!-- Uncomment this if you want this functionality
+			<p><%= label_tag 'remember_me', 'Remember me' %>
+			<%= check_box_tag 'remember_me', '1', @remember_me %></p>
+			-->
+
+			<p><%= submit_tag 'ログイン' %></p>
+			<% end -%>
+
+
+			<%= link_to '新規登録', {:controller => 'users', :action => 'new'}%>
+            </p>
+         </div><!-- main end -->
+         <div id="totop">
+         </div><!-- totop end -->
+         <div id="footMenu">
+         <ul>
+         <li></li>
+         </ul>
+         </div><!-- footerMenu end -->
+      </div><!-- contents end -->
+      <div id="footer">
+         <address></address>
+      </div><!-- footer end -->
+   </div><!-- wrapper end -->
+</div><!-- top end -->
+</body>

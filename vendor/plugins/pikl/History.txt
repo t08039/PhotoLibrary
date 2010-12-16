@@ -1,0 +1,40 @@
+== 0.3.0
+
+* Create color object in C,
+* Add some effects and utils.
+
+== 0.2.8
+
+* Bug Fix effect functions
+
+== 0.2.7
+
+* Bug Fix parsing extension.
+
+== 0.2.6
+
+* Bug Fix for mswin32 dll.
+
+== 0.2.5
+
+* Added fit method.
+
+== 0.2.4
+
+* Added flexible rotate.
+
+== 0.2.3
+
+* Change description.
+
+== 0.2.1
+
+* fix gem for mswin32.
+
+== 0.2.0
+
+* Supports method chain.
+
+== 0.1.0
+
+* First release!

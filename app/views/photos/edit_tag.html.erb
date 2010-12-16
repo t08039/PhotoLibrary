@@ -1,0 +1,5 @@
+<%= form_for @photo, :url => {:controller => 'photos', :action => 'update_tag'}, 
+:html => {:method => :get, :remote => true, "data-type" => "html", "data-update" => "#{@photo.id}_tag"} do |f| %>
+<%= f.hidden_field :id, :value => @photo.id %>
+<%= f.text_field :tag , :size => "8" %><%= f.submit '変更' %>
+<% end %>

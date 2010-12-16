@@ -1,0 +1,18 @@
+<table class="photo_show">
+<% for comment in @comments %>
+<tr><td>
+  ユーザ: <%= link_to User.find(comment.user_id).login, show_user_url(:user_id => comment.user_id) %>
+</td>
+<td align="right">
+  <%= comment.created_at.strftime("%Y年%m月%d日 %X")%>
+</td>
+<tr><td class="nomal">
+  <%= comment.comment %><br />
+</td>
+<td class="nomal" align="right">
+  <% if (comment.user_id == current_user.id) %>
+  <%= link_to '削除', comment, :confirm => 'コメントを削除しますか？', :method => :delete %>
+  <% end %>
+ </td></tr>
+<% end %>
+</table>

@@ -1,0 +1,21 @@
+<%= form_for(@zipload) do |f| %>
+  <% if @zipload.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@zipload.errors.count, "error") %> prohibited this zip from being saved:</h2>
+
+      <ul>
+      <% @zipload.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label 'ファイル' %><br />
+    <%= f.file_field :zipfile %>
+  </div>
+  <div class="actions">
+    <%= f.submit "アップロード" %>
+  </div>
+<% end %>

@@ -1,0 +1,49 @@
+<%= stylesheet_link_tag "hoverAccordion.css" %>
+<%= stylesheet_link_tag "photo.css" %>
+
+<body>
+<div id="top">
+   <div id="wrapper">
+      <div id="header">
+         <h2>フォトライブラリ</h2>
+      </div><!-- header end -->
+      <div id="contents">
+         <div id="main">
+			<h2>新規ユーザ追加</h2>
+			<p>
+			<% @user.password = @user.password_confirmation = nil %>
+
+			<%= error_messages_for :user %>
+			<%= form_for :user, :url => users_path do |f| -%>
+			<p><%= label_tag 'ログインID' %><br/>
+			<%= f.text_field :login %></p>
+
+			<p><%= label_tag 'メールアドレス' %><br/>
+			<%= f.text_field :email %></p>
+
+			<p><%= label_tag 'パスワード' %><br/>
+			<%= f.password_field :password %></p>
+
+			<p><%= label_tag 'パスワード（確認）' %><br/>
+			<%= f.password_field :password_confirmation %></p>
+
+			<p><%= submit_tag '登録' %></p>
+			<% end -%>
+			<p>
+			<%= link_to "戻る", {:controller => :session, :action => :new} %>
+            </p>
+         </div><!-- main end -->
+         <div id="totop">
+         </div><!-- totop end -->
+         <div id="footMenu">
+         <ul>
+         <li></li>
+         </ul>
+         </div><!-- footerMenu end -->
+      </div><!-- contents end -->
+      <div id="footer">
+         <address></address>
+      </div><!-- footer end -->
+   </div><!-- wrapper end -->
+</div><!-- top end -->
+</body>

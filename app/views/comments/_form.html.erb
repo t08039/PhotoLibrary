@@ -1,0 +1,9 @@
+<%= form_for @comment, :url => {:controller => 'comments', :action => 'update_comment'}, 
+:html => {:method => :get, :remote => true, "data-type" => "html", "data-update" => "comment"} do |f| %>
+    <%= f.hidden_field :photo_id, :value => @photo.id %>
+    <%if !@photo.id %>
+      <%= f.hidden_field :album_id, :value => @album.id %>
+    <% end %>
+    <%= f.text_area :comment, :size=>"40x5" %>
+    <%= f.submit "書き込み" %>
+<% end %>
