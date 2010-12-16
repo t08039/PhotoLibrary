@@ -3,53 +3,53 @@ Photo Library (2010/12/16)
 
 ============================================================
 
-1. �T�v  ===================================================
+1. 概要  ===================================================
 
-����Photo Library�͉摜�t�@�C����Web��ŊǗ��A���L���邽�߂�
-�A�v���P�[�V�����ł��B���[�U���ƂɎʐ^���Ǘ����ăR�����g��t
-���邱�Ƃ��ł��܂��B�t�@�C���A�b�v���[�h��zip�`���𗘗p����
-���Ƃ��ł��A�܂Ƃ߂Ĉ��k�����摜�t�@�C����o�^���邱�Ƃ��ł�
-�܂��B
+このPhoto Libraryは画像ファイルをWeb上で管理、共有するための
+アプリケーションです。ユーザごとに写真を管理してコメントを付
+けることができます。ファイルアップロードにzip形式を利用する
+ことができ、まとめて圧縮した画像ファイルを登録することもでき
+ます。
 
-�摜�t�@�C���ɂ�JPEG, PNG�`���ɑΉ����Ă��܂��B
+画像ファイルにはJPEG, PNG形式に対応しています。
 
 
-2. �����  ===============================================
+2. 動作環境  ===============================================
 
-Ruby on Rails 3.0.1�œ�����m�F���Ă��܂��B
+Ruby on Rails 3.0.1で動作を確認しています。
 
-�{�A�v���P�[�V�����ł͈ȉ��̃v���O�C���𗘗p���Ă��܂��B
- ruby-mysql       --------    MySQL�𗘗p����
- will_paginate    --------    �y�[�W���������
- rubyzip          --------    zip�t�@�C������舵��
- jquery-rails     --------    jQuery�𗘗p����
- mimemagic        --------    �t�@�C�������擾����
+本アプリケーションでは以下のプラグインを利用しています。
+ ruby-mysql       --------    MySQLを利用する
+ will_paginate    --------    ページ送りをする
+ rubyzip          --------    zipファイルを取り扱う
+ jquery-rails     --------    jQueryを利用する
+ mimemagic        --------    ファイル情報を取得する
  
-rails�����ŁAbundle instal���g���C���X�g�[���ł��܂��B
+rails環境下で、bundle instalを使いインストールできます。
 
 
-3. �g����  =================================================
+3. 使い方  =================================================
 
-config/database.yml�𗘗p����MySQL�̐ݒ�ɍ��킹�ď����ς���
-���������B
+config/database.ymlを利用するMySQLの設定に合わせて書き変えて
+ください。
 
-�������@�͗��p����Web�T�[�o�ɂ��قȂ�܂��B
-apache��œ��������@�Ƃ���Passenger(mod_rails)������܂��B
-�ȉ��̂悤�ȃT�C�g���Q�l�ɂȂ�܂��B
+導入方法は利用するWebサーバにより異なります。
+apache上で動かす方法としてPassenger(mod_rails)があります。
+以下のようなサイトが参考になります。
 
-Apache���Ruby on Rails�A�v���P�[�V�����𓮂����^Passenger(m
-od_rails for Apache)�̗��p
+Apache上でRuby on Railsアプリケーションを動かす／Passenger(m
+od_rails for Apache)の利用
  http://redmine.jp/tech_note/apache-passenger/
 
-�����Ƃ��ȒP�ȕ��@�Ƃ���Mongrel������܂��B
+もっとも簡単な方法としてMongrelがあります。
 gem install mongrel --include-dependencies
-�ŃC���X�g�[���ł��܂��B
-�ȉ��̃R�}���h�ŋN���ł��܂��B
-mongrel_rails start --port=�|�[�g�ԍ� -e production
+でインストールできます。
+以下のコマンドで起動できます。
+mongrel_rails start --port=ポート番号 -e production
 
-http://�T�[�o�A�h���X:�|�[�g�ԍ�/photos �ŃA�N�Z�X�ł��܂��B
+http://サーバアドレス:ポート番号/photos でアクセスできます。
 
 
-���p���郆�[�U�͏���̂ݐV�K�o�^���K�v�ɂȂ�܂��B
-���O�C����ʂ́u�V�K�o�^�v����V�K�o�^���s���Ă��������B
-�o�^���������A���O�C�����s���Ɨ��p�ł��܂��B
+利用するユーザは初回のみ新規登録が必要になります。
+ログイン画面の「新規登録」から新規登録を行ってください。
+登録が完了し、ログインを行うと利用できます。
