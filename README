@@ -44,8 +44,11 @@ od_rails for Apache)の利用
 もっとも簡単な方法としてMongrelがあります。
 gem install mongrel --include-dependencies
 でインストールできます。
-rails s --port=ポート番号で起動でき、
+以下のコマンドで起動できます。
+mongrel_rails start --port=ポート番号 -e production
+
 http://サーバアドレス:ポート番号/photos でアクセスできます。
+
 
 利用するユーザは初回のみ新規登録が必要になります。
 ログイン画面の「新規登録」から新規登録を行ってください。
